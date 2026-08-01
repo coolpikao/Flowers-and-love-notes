@@ -1394,3 +1394,18 @@ body {
     transform: translateY(-150vh);
   }
 }
+/* --- RESPONSIVE DEVICE ADJUSTMENTS --- */
+
+/* For Computers and larger screens (Default) */
+.text-overlay {
+    top: 15%; /* Adjust this percentage to move it up/down on computers */
+}
+
+/* For Phones and smaller screens (Screens 600px wide or less) */
+@media (max-width: 600px) {
+    .text-overlay {
+        top: 8%; /* Adjust this percentage to move it up/down specifically on phones */
+        width: 90%; /* Makes the box slightly wider on small phone screens */
+        padding: 20px; /* Reduces inner padding so text fits better */
+    }
+}
