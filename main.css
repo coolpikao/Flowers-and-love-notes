@@ -39,14 +39,27 @@ body {
 }
 
 .flowers {
-  position: absolute; /* Changed from relative */
+  position: absolute; 
   bottom: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   transform: scale(0.9);
   z-index: 2;
+  
+  /* Add these two lines to fade the flowers out */
+  animation: fadeOutFlowers 2s ease-in-out forwards; 
+  animation-delay: 5s; /* How long the flowers stay on screen before fading */
 }
+
+@keyframes fadeOutFlowers {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden; /* Removes them from the screen completely */
+  }
 }
 
 .flower {
@@ -1409,18 +1422,36 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100; /* Forces the text above the background and flowers */
-  color: #ffffff; /* Makes the text visible */
+  z-index: 100; 
+  color: #ffffff; 
   width: 90%;
   max-width: 700px;
-  max-height: 80vh; /* Prevents it from being taller than the screen */
-  overflow-y: auto; /* Adds a scrollbar if the letter is too long */
+  max-height: 80vh; 
+  overflow-y: auto; 
   text-align: center;
   font-family: sans-serif;
   line-height: 1.6;
-  background: rgba(0, 0, 0, 0.5); /* Adds a subtle dark overlay so flowers don't make text unreadable */
+  background: rgba(0, 0, 0, 0.5); 
   padding: 30px;
   border-radius: 15px;
+  
+  /* Add these lines to control the text visibility */
+  opacity: 0; /* Starts completely invisible */
+  visibility: hidden;
+  animation: fadeInText 2s ease-in-out forwards;
+  animation-delay: 6s; /* Starts fading in right after the flowers fade out */
+}
+
+/* Add this keyframe block anywhere in your CSS file */
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .love-letter p {
