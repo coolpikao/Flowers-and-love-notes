@@ -1394,12 +1394,11 @@ body {
     transform: translateY(-150vh);
   }
 }
-/* --- BOTTOM TEXT OVERLAY POSITIONING --- */
+/* --- FADING TEXT OVERLAY (PERFECT MIDDLE-LOWER SPOT) --- */
 .text-overlay {
     position: absolute;
-    /* Locks the text box to the bottom */
-    bottom: 40px !important; 
-    top: auto !important; /* Clears any top positioning */
+    /* Positions it nicely in the lower-middle area, clear of the very top and bottom */
+    top: 65% !important; 
     left: 50% !important;
     transform: translateX(-50%) !important; 
     
@@ -1409,11 +1408,20 @@ body {
     font-family: 'Arial', sans-serif;
     width: 85%;
     max-width: 650px;
-    background: rgba(0, 0, 0, 0.6); /* Slightly darker background for better readability against the stems */
+    background: rgba(0, 0, 0, 0.6); 
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     pointer-events: none; 
+
+    /* --- THE FADE-IN MAGIC --- */
+    opacity: 0; /* Starts completely invisible */
+}
+
+/* When the JavaScript removes the 'not-loaded' class from the body, this triggers the fade-in */
+body:not(.not-loaded) .text-overlay {
+    opacity: 1; /* Fades to fully visible */
+    transition: opacity 2s ease-in-out 1s; /* Takes 2 seconds to fade in gracefully */
 }
 
 .text-overlay h1 {
@@ -1429,10 +1437,10 @@ body {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 }
 
-/* --- MOBILE SPECIFIC (BOTTOM) --- */
+/* --- MOBILE SPECIFIC --- */
 @media (max-width: 600px) {
     .text-overlay {
-        bottom: 20px !important; /* Keeps it neatly tucked at the bottom of phone screens */
+        top: 60% !important; /* Adjusts slightly for smaller phone screens */
         width: 90%;
         padding: 15px;
     }
