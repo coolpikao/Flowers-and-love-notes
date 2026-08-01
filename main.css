@@ -1388,7 +1388,7 @@ body {
 
 @keyframes scrollUp {
   0% {
-    transform: translateY(100vh);
+    transform: translateY(160vh);
   }
   100% {
     transform: translateY(-150vh);
