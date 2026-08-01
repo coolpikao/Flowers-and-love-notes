@@ -1458,42 +1458,21 @@ body {
   margin-bottom: 15px;
 }
 /* ==========================================
-   1. FLOWERS STYLES & POSITIONING
+   JAVASCRIPT ANIMATION STATES
    ========================================== */
+
+/* 1. Allows the flowers to fade out smoothly */
 #flowersContainer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  transform: scale(0.9);
-  z-index: 2;
   transition: opacity 2s ease-in-out;
   opacity: 1;
 }
 
-/* Class added by JS after 10 seconds */
 #flowersContainer.fade-out {
   opacity: 0;
   pointer-events: none;
 }
 
-/* Individual Flower Positions */
-.flower--1 {
-  left: 40%;
-}
-
-.flower--2 {
-  left: 50%;
-}
-
-.flower--3 {
-  left: 60%;
-}
-
-/* ==========================================
-   2. TEXT CONTAINER & SCROLLING STYLES
-   ========================================== */
+/* 2. Styles and hides the text box initially */
 #textContainer {
   position: absolute;
   top: 50%;
@@ -1504,10 +1483,8 @@ body {
   width: 90%;
   max-width: 700px;
   max-height: 80vh;
-  overflow: hidden; /* Clips scrolling text within the box */
+  overflow: hidden; 
   text-align: center;
-  font-family: sans-serif;
-  line-height: 1.6;
   background: rgba(0, 0, 0, 0.55);
   padding: 30px;
   border-radius: 15px;
@@ -1518,27 +1495,22 @@ body {
   transition: opacity 2s ease-in-out;
 }
 
-/* Class added by JS after flowers fade */
+/* 3. Text becomes visible when JS adds this class */
 #textContainer.visible {
   opacity: 1;
   visibility: visible;
 }
 
-/* Class added when sequence ends */
 #textContainer.ending {
   opacity: 0;
 }
 
-/* The scrolling animation controlled by JS */
+/* 4. The scrolling animation controlled by JS */
 #loveLetter.scroll-text {
   animation: scrollUp 180s linear forwards;
 }
 
 @keyframes scrollUp {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
 }
