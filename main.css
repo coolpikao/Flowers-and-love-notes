@@ -1396,16 +1396,20 @@ body {
 }
 /* --- RESPONSIVE DEVICE ADJUSTMENTS --- */
 
-/* For Computers and larger screens (Default) */
+/* For Computers and larger screens */
 .text-overlay {
-    top: 15%; /* Adjust this percentage to move it up/down on computers */
+    position: absolute;
+    top: 15%; 
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 1s ease-in-out; /* Adds a smooth entrance if desired */
 }
 
 /* For Phones and smaller screens (Screens 600px wide or less) */
 @media (max-width: 600px) {
     .text-overlay {
-        top: 8%; /* Adjust this percentage to move it up/down specifically on phones */
-        width: 90%; /* Makes the box slightly wider on small phone screens */
-        padding: 20px; /* Reduces inner padding so text fits better */
+        top: 40px; /* Uses exact pixels instead of percentages so it doesn't break on mobile */
+        width: 90%;
+        padding: 20px;
     }
 }
