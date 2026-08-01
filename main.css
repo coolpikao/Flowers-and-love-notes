@@ -39,9 +39,14 @@ body {
 }
 
 .flowers {
-  position: relative;
+  position: absolute; /* Changed from relative */
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   transform: scale(0.9);
   z-index: 2;
+}
 }
 
 .flower {
@@ -55,10 +60,10 @@ body {
   -webkit-animation: moving-flower-1 4s linear infinite;
           animation: moving-flower-1 4s linear infinite;
 }
-.flower--1 .flower__line {
-  height: 70vmin;
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+.flower--1 {
+  left: 40%; /* Add this to push it near the center */
+  -webkit-animation: moving-flower-1 4s linear infinite;
+          animation: moving-flower-1 4s linear infinite;
 }
 .flower--1 .flower__line__leaf--1 {
   -webkit-animation: blooming-leaf-right var(--fl-speed) 1.6s backwards;
@@ -85,7 +90,7 @@ body {
           animation: blooming-leaf-left var(--fl-speed) 2s backwards;
 }
 .flower--2 {
-  left: 50%;
+  left: 50%; /* This is already in your code, keep it */
   transform: rotate(20deg);
   -webkit-animation: moving-flower-2 4s linear infinite;
           animation: moving-flower-2 4s linear infinite;
@@ -112,7 +117,7 @@ body {
           animation: blooming-leaf-left var(--fl-speed) 1.3s backwards;
 }
 .flower--3 {
-  left: 50%;
+  left: 60%; /* Change this from 50% to 60% so it sits to the right of flower 2 */
   transform: rotate(-15deg);
   -webkit-animation: moving-flower-3 4s linear infinite;
           animation: moving-flower-3 4s linear infinite;
@@ -1398,4 +1403,26 @@ body {
         /* Scales the flowers down slightly on phones so they fit the screen better */
         transform: translateX(-50%) scale(0.65) !important; 
     }
+}
+.love-letter-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100; /* Forces the text above the background and flowers */
+  color: #ffffff; /* Makes the text visible */
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh; /* Prevents it from being taller than the screen */
+  overflow-y: auto; /* Adds a scrollbar if the letter is too long */
+  text-align: center;
+  font-family: sans-serif;
+  line-height: 1.6;
+  background: rgba(0, 0, 0, 0.5); /* Adds a subtle dark overlay so flowers don't make text unreadable */
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.love-letter p {
+  margin-bottom: 15px;
 }
