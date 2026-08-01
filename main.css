@@ -1325,21 +1325,33 @@ body {
   }
 }
 CSS
-/* --- BULLETPROOF LOWER PLACEMENT & FADE-IN --- */
+/* --- 1. LOCK FLOWERS TO THE BOTTOM CENTER --- */
+body {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    overflow: hidden !important;
+}
+
+.flowers {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    /* Centers them perfectly and scales them to look right */
+    transform: translateX(-50%) scale(0.9) !important;
+}
+
+
+/* --- 2. TEXT OVERLAY: INDEPENDENT 12-SECOND FADE IN --- */
 .text-overlay {
-    /* Breaks out of page flexbox centering */
     position: fixed !important; 
-    
-    /* Puts it toward the bottom, well clear of the center */
-    top: auto !important;
-    bottom: 8% !important; /* Change this to 5% if you want it lower, or 12% if higher */
-    
+    bottom: 10% !important; /* Safe distance from the bottom edge */
     left: 50% !important;
     transform: translateX(-50%) !important; 
     
     text-align: center;
     color: white;
-    z-index: 999999 !important; /* Forces it on top of everything */
+    z-index: 999999 !important; 
     font-family: 'Arial', sans-serif;
     width: 85%;
     max-width: 650px;
@@ -1349,14 +1361,15 @@ CSS
     box-shadow: 0 4px 15px rgba(0,0,0,0.8);
     pointer-events: none; 
 
-    /* Stays invisible while the body has the 'not-loaded' class */
-    opacity: 0 !important;
+    /* Starts invisible, waits exactly 12 seconds, then fades in */
+    opacity: 0;
+    animation: fadeInText 2s ease-in-out 12s forwards !important;
 }
 
-/* Fades the text in smoothly once your JS timer finishes */
-body:not(.not-loaded) .text-overlay {
-    opacity: 1 !important;
-    transition: opacity 1.5s ease-in-out !important;
+/* The CSS animation that handles the fade-in */
+@keyframes fadeInText {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .text-overlay h1 {
@@ -1372,19 +1385,17 @@ body:not(.not-loaded) .text-overlay {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 }
 
-/* --- MOBILE SPECIFIC --- */
+
+/* --- 3. MOBILE RESPONSIVENESS --- */
 @media (max-width: 600px) {
     .text-overlay {
-        bottom: 5% !important; /* Tucked nicely near the bottom on phones */
+        bottom: 8% !important; 
         width: 92%;
-        padding: 12px;
+        padding: 15px;
     }
     
-    .text-overlay h1 {
-        font-size: 1.4rem;
-    }
-    
-    .text-overlay p {
-        font-size: 0.85rem;
+    .flowers {
+        /* Scales the flowers down slightly on phones so they fit the screen better */
+        transform: translateX(-50%) scale(0.65) !important; 
     }
 }
