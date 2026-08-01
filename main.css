@@ -1394,22 +1394,54 @@ body {
     transform: translateY(-150vh);
   }
 }
-/* --- RESPONSIVE DEVICE ADJUSTMENTS --- */
-
-/* For Computers and larger screens */
+/* --- BOTTOM TEXT OVERLAY POSITIONING --- */
 .text-overlay {
     position: absolute;
-    top: 15%; 
-    left: 50%;
-    transform: translateX(-50%);
-    transition: all 1s ease-in-out; /* Adds a smooth entrance if desired */
+    /* Locks the text box to the bottom */
+    bottom: 40px !important; 
+    top: auto !important; /* Clears any top positioning */
+    left: 50% !important;
+    transform: translateX(-50%) !important; 
+    
+    text-align: center;
+    color: white;
+    z-index: 100;
+    font-family: 'Arial', sans-serif;
+    width: 85%;
+    max-width: 650px;
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker background for better readability against the stems */
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    pointer-events: none; 
 }
 
-/* For Phones and smaller screens (Screens 600px wide or less) */
+.text-overlay h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    color: #ffb6c1; 
+}
+
+.text-overlay p {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+/* --- MOBILE SPECIFIC (BOTTOM) --- */
 @media (max-width: 600px) {
     .text-overlay {
-        top: 40px; /* Uses exact pixels instead of percentages so it doesn't break on mobile */
+        bottom: 20px !important; /* Keeps it neatly tucked at the bottom of phone screens */
         width: 90%;
-        padding: 20px;
+        padding: 15px;
+    }
+    
+    .text-overlay h1 {
+        font-size: 1.5rem;
+    }
+    
+    .text-overlay p {
+        font-size: 0.9rem;
     }
 }
