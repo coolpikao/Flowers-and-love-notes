@@ -1324,132 +1324,67 @@ body {
     transform: scale(0);
   }
 }
-/* --- NEW TEXT ANIMATION STYLES --- */
-
-/* Allow the flowers to fade out smoothly */
-#flowersContainer {
-  transition: opacity 2s ease-in-out;
-  opacity: 1;
-}
-
-.fade-out {
-  opacity: 0 !important;
-  pointer-events: none;
-}
-
-/* Container for the text */
-.love-letter-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh; /* Full screen height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  opacity: 0; /* Hidden initially */
-  transition: opacity 2s ease-in-out;
-  z-index: 100; 
-  pointer-events: none;
-}
-
-/* When JS adds this class, the text container becomes visible */
-.love-letter-container.visible {
-  opacity: 1;
-}
-
-.love-letter-container.ending {
-  opacity: 0;
-  transition: opacity 3s ease-in-out;
-}
-
-/* The actual text styling */
-.love-letter {
-  color: #fff; /* White text, change if needed */
-  font-family: 'Times New Roman', serif; /* Gives it a classic, romantic letter look */
-  font-size: 1.2rem;
-  line-height: 1.8;
-  text-align: center;
-  width: 90%;
-  max-width: 700px;
-  transform: translateY(100vh);
-}
-
-.love-letter p {
-  margin-bottom: 20px;
-  text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Helps text stand out against the background */
-}
-
-/* The scrolling animation */
-.scroll-text {
-  animation: scrollUp 180s linear forwards;
-}
-
-@keyframes scrollUp {
-  0% {
-    transform: translateY(80vh);
-  }
-  100% {
-    transform: translateY(-150vh);
-  }
-}
-/* --- FADING TEXT OVERLAY (PERFECT MIDDLE-LOWER SPOT) --- */
+CSS
+/* --- BULLETPROOF LOWER PLACEMENT & FADE-IN --- */
 .text-overlay {
-    position: absolute;
-    /* Positions it nicely in the lower-middle area, clear of the very top and bottom */
-    top: 65% !important; 
+    /* Breaks out of page flexbox centering */
+    position: fixed !important; 
+    
+    /* Puts it toward the bottom, well clear of the center */
+    top: auto !important;
+    bottom: 8% !important; /* Change this to 5% if you want it lower, or 12% if higher */
+    
     left: 50% !important;
     transform: translateX(-50%) !important; 
     
     text-align: center;
     color: white;
-    z-index: 100;
+    z-index: 999999 !important; /* Forces it on top of everything */
     font-family: 'Arial', sans-serif;
     width: 85%;
     max-width: 650px;
-    background: rgba(0, 0, 0, 0.6); 
-    padding: 25px;
+    background: rgba(0, 0, 0, 0.7); 
+    padding: 20px;
     border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.8);
     pointer-events: none; 
 
-    /* --- THE FADE-IN MAGIC --- */
-    opacity: 0; /* Starts completely invisible */
+    /* Stays invisible while the body has the 'not-loaded' class */
+    opacity: 0 !important;
 }
 
-/* When the JavaScript removes the 'not-loaded' class from the body, this triggers the fade-in */
+/* Fades the text in smoothly once your JS timer finishes */
 body:not(.not-loaded) .text-overlay {
-    opacity: 1; /* Fades to fully visible */
-    transition: opacity 2s ease-in-out 1s; /* Takes 2 seconds to fade in gracefully */
+    opacity: 1 !important;
+    transition: opacity 1.5s ease-in-out !important;
 }
 
 .text-overlay h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
     color: #ffb6c1; 
 }
 
 .text-overlay p {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    line-height: 1.4;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 }
 
 /* --- MOBILE SPECIFIC --- */
 @media (max-width: 600px) {
     .text-overlay {
-        top: 60% !important; /* Adjusts slightly for smaller phone screens */
-        width: 90%;
-        padding: 15px;
+        bottom: 5% !important; /* Tucked nicely near the bottom on phones */
+        width: 92%;
+        padding: 12px;
     }
     
     .text-overlay h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
     
     .text-overlay p {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 }
