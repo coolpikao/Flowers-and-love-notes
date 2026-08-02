@@ -1385,17 +1385,17 @@ body {
 /* The scrolling animation */
 .scroll-text {
   opacity: 1;
-  animation: scrollUp 180s linear forwards;
+  animation: scrollUp var(--scroll-duration, 165s) linear forwards;
 }
 
 @keyframes scrollUp {
   0% {
     opacity: 1;
-    transform: translateY(100%);
+    transform: translateY(var(--scroll-start, 58%));
   }
   100% {
     opacity: 1;
-    transform: translateY(-150vh);
+    transform: translateY(var(--scroll-end, -100%));
   }
 }
 
@@ -1438,10 +1438,21 @@ body {
 
 #loveLetter.scroll-text {
   /* Dynamic duration controlled by JS */
-  animation: scrollUp var(--scroll-duration, 180s) linear forwards;
+  animation: scrollUp var(--scroll-duration, 165s) linear forwards;
 }
 
-@keyframes scrollUp {
-  0% { transform: translateY(58%); }
-  100% { transform: translateY(-100%); }
+@media (max-width: 768px) {
+  #loveLetter.scroll-text {
+    --scroll-duration: 90s;
+    --scroll-start: 28%;
+    --scroll-end: -85%;
+  }
+}
+
+@media (min-width: 769px) {
+  #loveLetter.scroll-text {
+    --scroll-duration: 165s;
+    --scroll-start: 58%;
+    --scroll-end: -100%;
+  }
 }
