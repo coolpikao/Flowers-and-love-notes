@@ -20,9 +20,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (!flowers || !textContainer || !loveLetter) return;
 
-    // Shorter defaults and robust reveal tied to the actual end of the flowers' fade
-    const startDelay = 800;      // small pause before starting the fade-out of the flowers
-    const fallbackLetterDelay = 150;     // fallback delay to reveal text if no end event fires
+    // Reduced delays so text appears immediately after flowers start fading
+    const startDelay = 100;      // small pause before starting the fade-out of the flowers (reduced)
+    const fallbackLetterDelay = 50;     // fallback delay to reveal text if no end event fires (reduced)
     const scrollDuration = 180000;
     const fadeDuration = 3000;
 
@@ -44,7 +44,12 @@ window.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         flowers.classList.add('fade-out');
 
-        // Listen for animationend/transitionend on the flowers container and reveal text immediately
+        // Immediately reveal the text after a very short delay so we don't wait for a long
+        // flowers animation/transition (some fade animations in CSS were long). This makes
+        // the text show as soon as the flowers start fading.
+        setTimeout(showText, 80);
+
+        // Listen for animationend/transitionend on the flowers container and reveal text (backup)
         const onFinish = (e) => {
             // ensure we only react to events coming from the flowers element itself
             if (e && e.target !== flowers) return;
