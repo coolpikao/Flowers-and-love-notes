@@ -20,12 +20,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (!flowers || !textContainer || !loveLetter) return;
 
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const startDelay = 10000;
     const letterDelay = 1500;
-    const scrollDuration = 1650000;
+    const scrollDuration = isMobile ? 45000 : 165000;
     const fadeDuration = 3000;
 
     loveLetter.style.setProperty('--scroll-duration', `${scrollDuration / 1000}s`);
+    loveLetter.style.setProperty('--scroll-start', isMobile ? '0%' : '58%');
+    loveLetter.style.setProperty('--scroll-end', isMobile ? '-70%' : '-100%');
 
     flowers.classList.remove('fade-out');
     textContainer.classList.remove('visible');
