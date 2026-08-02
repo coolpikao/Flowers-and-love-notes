@@ -1343,117 +1343,49 @@ body {
   }
 }
 CSS
-/* --- 1. LOCK FLOWERS TO THE BOTTOM CENTER --- */
-body {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: flex-end !important;
-    overflow: hidden !important;
-}
-
-.flowers {
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 50% !important;
-    /* Centers them perfectly and scales them to look right */
-    transform: translateX(-50%) scale(0.9) !important;
-}
-
-
-/* --- 2. TEXT OVERLAY: INDEPENDENT 12-SECOND FADE IN --- */
-.text-overlay {
-    position: fixed !important; 
-    bottom: 10% !important; /* Safe distance from the bottom edge */
-    left: 50% !important;
-    transform: translateX(-50%) !important; 
-    
-    text-align: center;
-    color: white;
-    z-index: 999999 !important; 
-    font-family: 'Arial', sans-serif;
-    width: 85%;
-    max-width: 650px;
-    background: rgba(0, 0, 0, 0.7); 
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.8);
-    pointer-events: none; 
-
-    /* Starts invisible, waits exactly 12 seconds, then fades in */
-    opacity: 0;
-    animation: fadeInText 2s ease-in-out 12s forwards !important;
-}
-
-/* The CSS animation that handles the fade-in */
-@keyframes fadeInText {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.text-overlay h1 {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    color: #ffb6c1; 
-}
-
-.text-overlay p {
-    font-size: 0.95rem;
-    line-height: 1.4;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-}
-
-
-/* --- 3. MOBILE RESPONSIVENESS --- */
-@media (max-width: 600px) {
-    .text-overlay {
-        bottom: 8% !important; 
-        width: 92%;
-        padding: 15px;
-    }
-    
-    .flowers {
-        /* Scales the flowers down slightly on phones so they fit the screen better */
-        transform: translateX(-50%) scale(0.65) !important; 
-    }
-}
-.love-letter-container {
+/* ==========================================
+   TEXT CONTAINER & SCROLLING STYLES
+   ========================================== */
+#textContainer {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100; 
-  color: #ffffff; 
+  z-index: 100;
+  color: #ffffff;
   width: 90%;
   max-width: 700px;
-  max-height: 80vh; 
-  overflow-y: auto; 
+  max-height: 80vh;
+  
+  /* FIXED: Overflows hidden to clip the scrolling text cleanly */
+  overflow: hidden; 
   text-align: center;
   font-family: sans-serif;
   line-height: 1.6;
-  background: rgba(0, 0, 0, 0.5); 
+  background: rgba(0, 0, 0, 0.55);
   padding: 30px;
   border-radius: 15px;
   
-  /* Add these lines to control the text visibility */
-  opacity: 0; /* Starts completely invisible */
+  opacity: 0;
   visibility: hidden;
-  animation: fadeInText 2s ease-in-out forwards;
-  animation-delay: 6s; /* Starts fading in right after the flowers fade out */
+  transition: opacity 2s ease-in-out;
 }
 
-/* Add this keyframe block anywhere in your CSS file */
-@keyframes fadeInText {
-  0% {
-    opacity: 0;
-    visibility: hidden;
-  }
-  100% {
-    opacity: 1;
-    visibility: visible;
-  }
+#textContainer.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
-.love-letter p {
-  margin-bottom: 15px;
+#textContainer.ending {
+  opacity: 0;
+}
+
+#loveLetter.scroll-text {
+  /* Dynamic duration controlled by JS */
+  animation: scrollUp var(--scroll-duration, 180s) linear forwards;
+}
+
+@keyframes scrollUp {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
 }
