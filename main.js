@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (!flowers || !textContainer || !loveLetter) return;
 
-    const startDelay = 10000;
+    const startDelay = 40000;
     const letterDelay = 2000;
     const scrollDuration = 180000;
     const fadeDuration = 3000;
