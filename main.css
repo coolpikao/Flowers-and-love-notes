@@ -1451,16 +1451,16 @@ body {
 
 @media (max-width: 768px) {
   #loveLetter.scroll-text {
-    --scroll-duration: 60s;
-    --scroll-start: 5%;
+    --scroll-duration: 120s;
+    --scroll-start: 58%;
     --scroll-end: -55%;
   }
 }
 
 @media (min-width: 769px) {
   #loveLetter.scroll-text {
-    --scroll-duration: 50s;
-    --scroll-start: 18%;
-    --scroll-end: -72%;
+    --scroll-duration: 65s;
+    --scroll-start: 58%;
+    --scroll-end: -68%;
   }
 }
