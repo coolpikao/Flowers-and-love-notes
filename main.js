@@ -53,16 +53,3 @@ window.addEventListener("DOMContentLoaded", () => {
         flowers.classList.remove('fade-out');
     }, finalReset);
 });
-
-    const startDelay = 10000;
-    const letterDelay = 2000;
-    const scrollDuration = 180000;
-    const fadeDuration = 3000;
-
-    // ADDED: Sends the scrollDuration directly to the CSS variable
-    loveLetter.style.setProperty('--scroll-duration', `${scrollDuration / 1000}s`);
-
-    flowers.classList.remove('fade-out');
-    textContainer.classList.remove('visible');
-    textContainer.classList.remove('ending');
-    loveLetter.classList.remove('scroll-text');
