@@ -22,13 +22,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const startDelay = 10000;
-    const letterDelay = 1500;
-    const scrollDuration = isMobile ? 45000 : 165000;
+    const letterDelay = 1000;
+    const scrollDuration = isMobile ? 30000 : 90000;
     const fadeDuration = 3000;
 
     loveLetter.style.setProperty('--scroll-duration', `${scrollDuration / 1000}s`);
-    loveLetter.style.setProperty('--scroll-start', isMobile ? '0%' : '58%');
-    loveLetter.style.setProperty('--scroll-end', isMobile ? '-70%' : '-100%');
+    loveLetter.style.setProperty('--scroll-start', isMobile ? '0%' : '40%');
+    loveLetter.style.setProperty('--scroll-end', isMobile ? '-60%' : '-80%');
 
     flowers.classList.remove('fade-out');
     textContainer.classList.remove('visible');
