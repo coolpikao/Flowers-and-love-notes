@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const startDelay = 10000;
     const letterDelay = 1500;
-    const scrollDuration = 180000;
+    const scrollDuration = 1650000;
     const fadeDuration = 3000;
 
     loveLetter.style.setProperty('--scroll-duration', `${scrollDuration / 1000}s`);
