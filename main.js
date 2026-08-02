@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const startDelay = 10000;
     const letterDelay = 2000;
-    const scrollDuration = 100000;
+    const scrollDuration = 180000;
     const fadeDuration = 3000;
 
     flowers.classList.remove('fade-out');
