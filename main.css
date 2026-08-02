@@ -52,23 +52,26 @@ body {
   animation-delay: 5s; /* How long the flowers stay on screen before fading */
 }
 
-@keyframes fadeOutFlowers {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden; /* Removes them from the screen completely */
-  }
+.flowers {
+  position: absolute; 
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: scale(0.9);
+  z-index: 2;
+  
+  /* CHANGED: Removes hardcoded animation, adds transition */
+  transition: opacity 2s ease-in-out;
+  opacity: 1;
 }
 
-.flower {
-  position: absolute;
-  bottom: 10vmin;
-  transform-origin: bottom center;
-  z-index: 10;
-  --fl-speed: 0.3s;
+/* ADDED: The class JavaScript will add to fade the flowers */
+.flowers.fade-out {
+  opacity: 0;
+  pointer-events: none;
 }
+
 .flower--1 {
   -webkit-animation: moving-flower-1 4s linear infinite;
           animation: moving-flower-1 4s linear infinite;
