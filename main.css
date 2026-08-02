@@ -207,3 +207,48 @@ body {
 }
 
 /* End of appended message styles */
+
+
+/* Immediate love letter reveal overrides */
+.love-letter-container {
+  opacity: 0;
+  transform: translateY(8vh);
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+  transition-delay: 0s;
+  pointer-events: none;
+  z-index: 50; /* sit above flowers (flowers had z-index:2) */
+  position: relative;
+}
+
+.love-letter-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.love-letter {
+  max-width: 60ch;
+  margin: 0 auto;
+  color: #fff;
+  line-height: 1.6;
+  font-size: clamp(1rem, 2.5vmin, 1.25rem);
+  position: relative;
+  z-index: 51;
+}
+
+/* If JS uses .scroll-text to animate the content, ensure no extra delay on appearance */
+.scroll-text {
+  animation-name: scrollUp;
+  animation-duration: 180000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 0s; /* ensure it starts immediately once added */
+}
+
+/* Make the flowers fade-out class reduce visibility quickly and not block the letter */
+.flowers.fade-out {
+  opacity: 0.001; /* nearly invisible while allowing a short transition */
+  transition: opacity 0.5s ease-out;
+  pointer-events: none;
+}
