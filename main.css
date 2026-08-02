@@ -106,7 +106,7 @@ body {
           animation: blooming-leaf-left var(--fl-speed) 2s backwards;
 }
 .flower--2 {
-  left: 50%; /* This is already in your code, keep it */
+  left: 50%;
   transform: rotate(20deg);
   -webkit-animation: moving-flower-2 4s linear infinite;
           animation: moving-flower-2 4s linear infinite;
@@ -1345,7 +1345,46 @@ body {
     transform: scale(0);
   }
 }
-CSS
+
+.flower {
+  position: absolute;
+  bottom: 10vmin;
+  transform-origin: bottom center;
+  z-index: 10;
+  --fl-speed: 0.3s;
+  
+  /* ADDED: 3D context for smooth rendering */
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.flower__line__leaf--3, .flower__line__leaf--4, .flower__line__leaf--6 {
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: var(--h);
+  border-bottom-right-radius: var(--h);
+  /* FIXED: Was -460% */
+  left: -46%; 
+  top: 12%;
+  transform: rotate(-70deg) rotateY(30deg);
+}
+
+.flower__line__leaf--4 {
+  top: 40%;
+}
+.flower__line__leaf--5 {
+  top: 0;
+  transform-origin: left;
+  transform: rotate(70deg) rotateY(30deg) scale(0.6);
+}
+
+.flower__line__leaf--6 {
+  top: -2%;
+  /* FIXED: Was -450% */
+  left: -45%; 
+  transform-origin: right;
+  transform: rotate(-70deg) rotateY(30deg) scale(0.6);
+}
 /* ==========================================
    TEXT CONTAINER & SCROLLING STYLES
    ========================================== */
