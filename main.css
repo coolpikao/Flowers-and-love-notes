@@ -1459,7 +1459,7 @@ body {
 
 @media (min-width: 769px) {
   #loveLetter.scroll-text {
-    --scroll-duration: 65s;
+    --scroll-duration: 120s;
     --scroll-start: 58%;
     --scroll-end: -68%;
   }
