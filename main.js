@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const startDelay = 10000;
     const letterDelay = 1000;
-    const scrollDuration = isMobile ? 120000 : 60000;
+    const scrollDuration = isMobile ? 120000 : 120000;
     const fadeDuration = 3000;
 
     loveLetter.style.setProperty('--scroll-duration', `${scrollDuration / 1000}s`);
